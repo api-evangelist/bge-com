@@ -1,43 +1,70 @@
 aid: bge-com
+
 name: BGE (Baltimore Gas and Electric)
+
 description: Baltimore Gas and Electric (BGE), an Exelon subsidiary, is the gas and electric utility serving
   central Maryland. No public developer API or OpenAPI contract was found; customer usage data is exposed
   through Green Button Download My Data, and third-party data access runs through supplier portal requests
   under customer authorization rather than a documented API.
+
 url: https://raw.githubusercontent.com/api-evangelist/bge-com/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:energy-gap
-x-tier: stub
+
+x-tier: profiled
+
 x-tier-reason: harvest
+
 specificationVersion: '0.20'
+
 created: '2026-10-13'
+
 modified: '2026-10-13'
+
 tags:
 - Company
 - Energy
 - Utilities
 - Electricity
 - Natural Gas
-apis: []
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: Hosts
+  url: hosts/bge-com-hosts.yml
 - type: DomainSecurity
   url: security/bge-com-domain-security.yml
 - type: Website
   url: https://www.bge.com
+
+apis: []
+
 x-coverage:
-  status: no-public-api
+  state: none
+  reason: no-developer-program
+  method: probed
   checked: '2026-10-13'
-  finding: Contract discovery on api.bge.com and www.bge.com found no OpenAPI, AsyncAPI, GraphQL or MCP.
-    www.bge.com returns a ~3KB bot-protection shell to non-browser clients for every path, so Green Button
-    pages could not be read directly. BGE announced Green Button Connect My Data support in 2012 (BusinessWire);
-    no current BGE or Exelon page confirming a live CMD/ESPI third-party registration was found. Third-party
-    guides describe supplier data access via a supplier portal with customer letter of authorization,
-    delivering XML files, not a public API.
-  sources:
-  - https://www.businesswire.com/news/home/20121001005240/en/Baltimore-Gas-and-Electric-Company-Announces-Support-for-Second-Phase-of-Green-Button-Initiative
-  - https://nectarclimate.com/utilities/baltimore-gas-electric-bge
+  detail: Contract discovery on api.bge.com and www.bge.com found no OpenAPI, AsyncAPI, GraphQL or MCP. www.bge.com
+    returns a ~3KB bot-protection shell to non-browser clients for every path, so Green Button pages could not be
+    read directly. BGE announced Green Button Connect My Data support in 2012 (BusinessWire); no current BGE or
+    Exelon page confirming a live CMD/ESPI third-party registration was found. Third-party guides describe supplier
+    data access via a supplier portal with customer letter of authorization, delivering XML files, not a public
+    API.
+  evidence:
+  - url: https://api.bge.com/
+    status: unresolved
+  - url: https://www.bge.com/
+    status: 200
+  - url: https://www.businesswire.com/news/home/20121001005240/en/Baltimore-Gas-and-Electric-Company-Announces-Support-for-Second-Phase-of-Green-Button-Initiative
+    status: unresolved
+x-enrichment:
+  status: enriched
+  pass: local-v5
+  date: '2026-10-13'
